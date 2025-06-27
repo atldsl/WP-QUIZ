@@ -225,6 +225,51 @@
             font-size: 1.2em;
         }
 
+        .return-home {
+            background: #28a745;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .return-home:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .feedback-comment {
+            margin-top: 8px;
+            font-weight: normal;
+            font-style: italic;
+        }
+
         .hidden {
             display: none;
         }
@@ -260,6 +305,10 @@
 </head>
 <body>
     <div class="quiz-container">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="https://willspark.com" class="return-home">← Return to WillsPark.com</a>
+        </div>
+        
         <div class="quiz-header">
             <h1>🌳 Alpharetta & Wills Park Quiz 🏞️</h1>
             <p>Test your knowledge about Alpharetta's parks, attractions, and local gems!</p>
@@ -274,6 +323,10 @@
                 <div class="question-number" id="questionNumber">Question 1 of 10</div>
                 <div class="question" id="questionText"></div>
                 <div class="options" id="optionsContainer"></div>
+                <div class="feedback" id="feedbackContainer">
+                    <div id="feedbackText"></div>
+                    <div class="feedback-comment" id="feedbackComment"></div>
+                </div>
             </div>
 
             <div class="controls">
@@ -291,6 +344,7 @@
                 <p>Wills Park is Alpharetta's largest park at 120 acres and features everything from equestrian facilities to disc golf courses. It's truly the heart of recreational activities in downtown Alpharetta!</p>
             </div>
             <button class="btn btn-primary" onclick="restartQuiz()" style="margin-top: 20px;">Take Quiz Again</button>
+            <a href="https://willspark.com" class="return-home" style="margin-top: 20px; text-decoration: none;">← Return to WillsPark.com</a>
         </div>
     </div>
 
@@ -300,61 +354,71 @@
                 question: "How many acres is Wills Park, Alpharetta's largest park?",
                 options: ["80 acres", "120 acres", "150 acres", "200 acres"],
                 correct: 1,
-                explanation: "Wills Park spans 120 acres and is located in downtown Alpharetta on Old Milton Parkway."
+                explanation: "Wills Park spans 120 acres and is located in downtown Alpharetta on Old Milton Parkway.",
+                comment: "120 acres makes Wills Park the perfect size for all its amazing facilities!"
             },
             {
                 question: "What unique recreational activity can you enjoy at Wills Park that requires bringing your own equipment?",
                 options: ["Disc Golf", "Rock Climbing", "Kayaking", "Skateboarding"],
                 correct: 0,
-                explanation: "Wills Park has a disc golf course where visitors need to bring their own discs to play."
+                explanation: "Wills Park has a disc golf course where visitors need to bring their own discs to play.",
+                comment: "Disc golf is one of the hottest sports at Wills Park!"
             },
             {
-                question: "How many baseball fields does Wills Park have in total?",
-                options: ["5 fields", "7 fields", "10 fields", "12 fields"],
-                correct: 2,
-                explanation: "Wills Park features 7 grass baseball fields, 1 synthetic turf baseball field, and 2 tee-ball fields, totaling 10 fields."
-            },
-            {
-                question: "What special center at Wills Park celebrates Alpharetta's heritage?",
-                options: ["Arts Center", "Equestrian Center", "Music Center", "History Center"],
+                question: "What facility in Wills Park is known for history and is a popular wedding venue?",
+                options: ["Community Center", "Mansell House", "Pavilion Hall", "Garden House"],
                 correct: 1,
-                explanation: "The Wills Park Equestrian Center celebrates Alpharetta's equestrian heritage with world-class facilities."
+                explanation: "The historic Mansell House at Wills Park is a beautiful venue popular for weddings and events.",
+                comment: "The Mansell House adds a touch of historic charm to your special day!"
+            },
+            {
+                question: "What makes Wills Park special among all the other parks in the area?",
+                options: ["Large playground", "Equestrian Center", "Food trucks", "Concert stage"],
+                correct: 1,
+                explanation: "The Wills Park Equestrian Center celebrates Alpharetta's equestrian heritage with world-class facilities.",
+                comment: "The Equestrian Center makes Wills Park truly unique in the region!"
             },
             {
                 question: "Which popular shopping and entertainment destination is located in Alpharetta?",
                 options: ["Avalon", "Lenox Square", "Perimeter Mall", "Town Center"],
                 correct: 0,
-                explanation: "Avalon is a premier mixed-use development in Alpharetta featuring shopping, dining, and entertainment."
+                explanation: "Avalon is a premier mixed-use development in Alpharetta featuring shopping, dining, and entertainment.",
+                comment: "Avalon brings that perfect blend of shopping, dining, and fun to Alpharetta!"
             },
             {
-                question: "What recreational water feature can families enjoy at Wills Park?",
-                options: ["Water slides", "Swimming pool", "Splash pad", "Lake swimming"],
+                question: "Where do Alpharetta residents go to beat the heat during the summer?",
+                options: ["City Pool", "Wills Park Aquatic Center", "Recreation Center", "Community Lake"],
                 correct: 1,
-                explanation: "Wills Park has an aquatics center with a swimming pool for community enjoyment."
+                explanation: "The Wills Park Aquatic Center is the go-to destination for cooling off in Alpharetta.",
+                comment: "The Aquatic Center is the perfect summer escape for families!"
             },
             {
                 question: "How many picnic pavilions are available at Wills Park?",
                 options: ["3 pavilions", "5 pavilions", "7 pavilions", "9 pavilions"],
                 correct: 1,
-                explanation: "Wills Park offers 5 picnic pavilions, with two available on a first-come, first-serve basis."
+                explanation: "Wills Park offers 5 picnic pavilions, with two available on a first-come, first-serve basis.",
+                comment: "Five pavilions means there's always a great spot for your family gathering!"
             },
             {
-                question: "What type of courts are available for sports enthusiasts at Wills Park?",
-                options: ["Only basketball courts", "Tennis and basketball courts", "Just volleyball courts", "Only pickleball courts"],
-                correct: 1,
-                explanation: "Wills Park features both tennis courts and basketball courts for community recreation."
+                question: "What courts don't you find at Wills Park?",
+                options: ["Tennis", "Basketball", "Pickleball", "Badminton"],
+                correct: 3,
+                explanation: "While Wills Park has tennis, basketball, and pickleball courts, badminton courts are not available.",
+                comment: "With tennis, basketball, and pickleball, there's still plenty of court action at Wills Park!"
             },
             {
                 question: "What makes Wills Park's playground area special for children?",
                 options: ["One large playground", "Two themed playgrounds", "Three different playgrounds", "Four adventure zones"],
                 correct: 2,
-                explanation: "Wills Park offers three playgrounds, including the popular 'Wacky World' playground area."
+                explanation: "Wills Park offers three playgrounds, including the popular 'Wacky World' playground area.",
+                comment: "Three playgrounds mean endless fun and adventure for kids of all ages!"
             },
             {
                 question: "Besides recreation, what other community services does Alpharetta's parks department offer?",
                 options: ["Only sports programs", "Recreation & Arts programs", "Just fitness classes", "Only summer camps"],
                 correct: 1,
-                explanation: "Alpharetta Recreation, Parks and Cultural Services offers a wide variety of programs and activities for families throughout the year."
+                explanation: "Alpharetta Recreation, Parks and Cultural Services offers a wide variety of programs and activities for families throughout the year.",
+                comment: "From arts to recreation, there's always something exciting happening in Alpharetta!"
             }
         ];
 
@@ -385,9 +449,33 @@
                 optionsContainer.appendChild(optionDiv);
             });
 
+            // Hide feedback initially
+            document.getElementById('feedbackContainer').style.display = 'none';
+
             // Restore previous selection if exists
             if (selectedAnswers[currentQuestion] !== undefined) {
-                document.getElementById(`option-${selectedAnswers[currentQuestion]}`).classList.add('selected');
+                const selectedIndex = selectedAnswers[currentQuestion];
+                const selectedOption = document.getElementById(`option-${selectedIndex}`);
+                selectedOption.classList.add('selected');
+                
+                // Show feedback for previous selection
+                const feedbackContainer = document.getElementById('feedbackContainer');
+                const feedbackText = document.getElementById('feedbackText');
+                const feedbackComment = document.getElementById('feedbackComment');
+                
+                if (selectedIndex === question.correct) {
+                    selectedOption.classList.add('correct');
+                    feedbackContainer.className = 'feedback correct';
+                    feedbackText.textContent = '✓ Correct!';
+                } else {
+                    selectedOption.classList.add('incorrect');
+                    document.getElementById(`option-${question.correct}`).classList.add('correct');
+                    feedbackContainer.className = 'feedback incorrect';
+                    feedbackText.textContent = '✗ Incorrect';
+                }
+                
+                feedbackComment.textContent = question.comment;
+                feedbackContainer.style.display = 'block';
                 document.getElementById('nextBtn').disabled = false;
             } else {
                 document.getElementById('nextBtn').disabled = true;
@@ -400,13 +488,37 @@
 
         function selectOption(optionIndex) {
             // Remove previous selection
-            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected', 'correct', 'incorrect');
+            });
             
             // Add selection to clicked option
-            document.getElementById(`option-${optionIndex}`).classList.add('selected');
+            const selectedOption = document.getElementById(`option-${optionIndex}`);
+            selectedOption.classList.add('selected');
             
             // Store the answer
             selectedAnswers[currentQuestion] = optionIndex;
+            
+            // Show immediate feedback
+            const question = quizData[currentQuestion];
+            const feedbackContainer = document.getElementById('feedbackContainer');
+            const feedbackText = document.getElementById('feedbackText');
+            const feedbackComment = document.getElementById('feedbackComment');
+            
+            if (optionIndex === question.correct) {
+                selectedOption.classList.add('correct');
+                feedbackContainer.className = 'feedback correct';
+                feedbackText.textContent = '✓ Correct!';
+            } else {
+                selectedOption.classList.add('incorrect');
+                // Also highlight the correct answer
+                document.getElementById(`option-${question.correct}`).classList.add('correct');
+                feedbackContainer.className = 'feedback incorrect';
+                feedbackText.textContent = '✗ Incorrect';
+            }
+            
+            feedbackComment.textContent = question.comment;
+            feedbackContainer.style.display = 'block';
             
             // Enable next button
             document.getElementById('nextBtn').disabled = false;
